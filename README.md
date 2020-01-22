@@ -4,7 +4,7 @@ RSS news reader for South Africa top publishers made with:
 - Angular
 - MDBootstrap
 
-## Current Publisher list
+## Current Publisher Channels
 - News24
 - MyBroadband
 - Daily Maverick
