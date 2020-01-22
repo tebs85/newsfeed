@@ -1,6 +1,6 @@
 # Newsfeed
 
-This project was generated with Angular CLI version 8.3.23. Newsfeed is RSS news reader for South Africa top publishers made with inspired ny the Pulse app:
+This project was generated with Angular CLI version 8.3.23. Newsfeed is RSS news reader for South Africa top publishers made with inspired by the Pulse app built with:
 - Angular
 - MDBootstrap
 
