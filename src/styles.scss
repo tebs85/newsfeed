@@ -14,7 +14,7 @@ html, body {
     }
 }
 
-.top-stories {
+.one {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -29,10 +29,9 @@ html, body {
     top: 190px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.world {
+.two {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -47,10 +46,9 @@ html, body {
     top: 450px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.africa {
+.three {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -65,10 +63,9 @@ html, body {
     top: 710px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.south-africa {
+.four {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -83,10 +80,9 @@ html, body {
     top: 970px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.tech {
+.five {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -101,10 +97,9 @@ html, body {
     top: 1230px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.sport {
+.six {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -119,10 +114,9 @@ html, body {
     top: 1490px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.business {
+.seven {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -137,10 +131,9 @@ html, body {
     top: 1750px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
-.entertainment {
+.eight {
     font: bold 16px sans-Serif;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -155,7 +148,6 @@ html, body {
     top: 2010px;
     left: -70px;
     transform: rotate(-90deg);
-    z-index: 10000;
 }
 
 #frameModalTop {

@@ -1,89 +1,52 @@
 <!-- <app-main-nav></app-main-nav> -->
 
 <div style="padding: 4em;">
-  <h2>News24</h2>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="top-stories-tab" data-toggle="tab" href="#top-stories" role="tab" aria-controls="top-stories" aria-selected="true">Top Stories</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="news24-tab" data-toggle="tab" href="#news24" role="tab" aria-controls="news24" aria-selected="false">News 24</a>
+    </li>
+  </ul>
 
-  <div class="no-data" *ngIf="news24TopStories.length == 0">
-    <p>There is no News24 stories yet!</p>
-  </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="top-stories" role="tabpanel" aria-labelledby="top-stories-tab">
 
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24TopStories.length !== 0">
-      <h3 class="top-stories">Top Stories</h3>
-      <div class="card" *ngFor="let story of news24TopStories" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+      <div class="no-data" *ngIf="topStories.length == 0">
+        <p>There is no Top Stories yet!</p>
+      </div>
+
+      <div *ngFor="let news of topStories">
+        <div class="scrolling-wrapper" >
+          <div *ngIf="topStories.length !== 0">
+            <h3 class="top-stories">{{news.title}}</h3>
+            <div class="card" *ngFor="let story of news.items" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
+              <h4 (click)="openModal(story)">{{story.title}}</h4>
+              <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24World.length !== 0">
-      <h3 class="world">World</h3>
-      <div class="card" *ngFor="let story of news24World" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+    <div class="tab-pane fade" id="news24" role="tabpanel" aria-labelledby="news24-tab">
+      <div class="no-data" *ngIf="news24.length == 0">
+        <p>There is no News24 stories yet!</p>
       </div>
-    </div>
-  </div>
 
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24Africa.length !== 0">
-      <h3 class="africa">Africa</h3>
-      <div class="card" *ngFor="let story of news24Africa" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+      <div *ngFor="let news of news24">
+        <div class="scrolling-wrapper" >
+          <div *ngIf="news24.length !== 0">
+            <h3 class="top-stories">{{news.title}}</h3>
+            <div class="card" *ngFor="let story of news.items" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
+              <h4 (click)="openModal(story)">{{story.title}}</h4>
+              <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24SouthAfrica.length !== 0">
-      <h3 class="south-africa">South Africa</h3>
-      <div class="card" *ngFor="let story of news24SouthAfrica" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24Tech.length !== 0">
-      <h3 class="tech">Technology</h3>
-      <div class="card" *ngFor="let story of news24Tech" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24Sport.length !== 0">
-      <h3 class="sport">Sport</h3>
-      <div class="card" *ngFor="let story of news24Sport" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24Business.length !== 0">
-      <h3 class="business">Business</h3>
-      <div class="card" *ngFor="let story of news24Business" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="scrolling-wrapper" >
-    <div *ngIf="news24Entertainment.length !== 0">
-      <h3 class="entertainment">Entertainment</h3>
-      <div class="card" *ngFor="let story of news24Entertainment" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-      </div>
     </div>
   </div>
 </div>
@@ -94,7 +57,7 @@
   tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  aria-hidden="true"  style="overflow-y: auto"
 >
   <!--Dialog-->
-  <div class="modal-dialog modal-full-height modal-right" role="document">
+  <div class="modal-dialog modal-lg modal-full-height modal-right" role="document">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
