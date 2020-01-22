@@ -20,6 +20,11 @@ export class AppComponent implements OnInit {
   news24Sport: any = [];
   news24Business: any = [];
   news24Entertainment: any = [];
+  story = {
+    title: 'Heading',
+    description: 'Description will be here',
+    content: 'Content will be here'
+  }; 
 
   constructor(private feed: FeedService) { }
 
@@ -27,8 +32,9 @@ export class AppComponent implements OnInit {
     this.loadStories();
   }
 
-  openModal() {
-
+  openModal(story: any) {
+    this.story = story;
+    this.modal.show();
   }
 
   loadStories() {

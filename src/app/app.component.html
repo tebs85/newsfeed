@@ -11,7 +11,7 @@
     <div *ngIf="news24TopStories.length !== 0">
       <h3 class="top-stories">Top Stories</h3>
       <div class="card" *ngFor="let story of news24TopStories" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <div *ngIf="news24World.length !== 0">
       <h3 class="world">World</h3>
       <div class="card" *ngFor="let story of news24World" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div *ngIf="news24Africa.length !== 0">
       <h3 class="africa">Africa</h3>
       <div class="card" *ngFor="let story of news24Africa" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -41,7 +41,7 @@
     <div *ngIf="news24SouthAfrica.length !== 0">
       <h3 class="south-africa">South Africa</h3>
       <div class="card" *ngFor="let story of news24SouthAfrica" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -51,7 +51,7 @@
     <div *ngIf="news24Tech.length !== 0">
       <h3 class="tech">Technology</h3>
       <div class="card" *ngFor="let story of news24Tech" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -61,7 +61,7 @@
     <div *ngIf="news24Sport.length !== 0">
       <h3 class="sport">Sport</h3>
       <div class="card" *ngFor="let story of news24Sport" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -71,7 +71,7 @@
     <div *ngIf="news24Business.length !== 0">
       <h3 class="business">Business</h3>
       <div class="card" *ngFor="let story of news24Business" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -81,7 +81,7 @@
     <div *ngIf="news24Entertainment.length !== 0">
       <h3 class="entertainment">Entertainment</h3>
       <div class="card" *ngFor="let story of news24Entertainment" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-        <h4 (click)="frame.show()">{{story.title}}</h4>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
       </div>
     </div>
@@ -102,12 +102,14 @@
         <button type="button" class="close pull-right" aria-label="Close" (click)="frame.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
       </div>
 
       <!--Body-->
       <div class="modal-body">
-        Modal Body
+        <p><small>{{story.pubDate | date: "dd MMM, yyyy"}}</small></p>
+               
+        {{story.content}}
       </div>
 
     </div>
