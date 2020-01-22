@@ -1,0 +1,159 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    background-color: #333; 
+    color: white; 
+}
+
+.scrolling-wrapper {
+    width: 500%;
+    margin-bottom: 40px;
+    overflow: auto;
+  
+    .card {
+        display: inline-block;
+    }
+}
+
+.top-stories {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 190px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.world {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 450px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.africa {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 710px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.south-africa {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 970px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.tech {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 1230px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.sport {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 1490px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.business {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 1750px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
+
+.entertainment {
+    font: bold 16px sans-Serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #369;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0;
+    line-height: 48px;   
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    top: 2010px;
+    left: -70px;
+    transform: rotate(-90deg);
+    z-index: 10000;
+}
