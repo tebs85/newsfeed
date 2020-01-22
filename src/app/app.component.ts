@@ -60,7 +60,6 @@ export class AppComponent implements OnInit {
       return this.feed.getFeedContent(story.url)
       .subscribe((data: any) => {
         this.news24.push({title: story.title, items: data.items});
-        console.log(this.news24);
       })
     })
   }
@@ -70,7 +69,6 @@ export class AppComponent implements OnInit {
       return this.feed.getFeedContent(story.url)
       .subscribe((data: any) => {
         this.topStories.push({title: story.title, items: data.items});
-        console.log(this.topStories);
       })
     })
   }
