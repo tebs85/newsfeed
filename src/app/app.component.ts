@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FeedService } from './services/feed.service';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { FeedService } from './services/feed.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild(ModalDirective, {static: true}) modal: ModalDirective;
+  
   title = 'News Feed';
   news24TopStories: any = [];
   news24World: any = [];
@@ -21,6 +25,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loadStories();
+  }
+
+  openModal() {
+
   }
 
   loadStories() {
