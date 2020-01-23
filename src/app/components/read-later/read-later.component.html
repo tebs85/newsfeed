@@ -9,14 +9,12 @@
     <p>There is no Saved Stories yet!</p>
   </div>
 
-  <div *ngFor="let news of savedStories">
+  <div *ngFor="let story of savedStories">
     <div class="scrolling-wrapper" >
       <div *ngIf="savedStories.length !== 0">
-        <h3 class="top-stories">{{news.title}}</h3>
-        <div class="card" *ngFor="let story of news.items" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-          <h4 (click)="openModal(story)">{{story.title}}</h4>
-          <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-        </div>
+        <h4 (click)="openModal(story)">{{story.title}}</h4>
+        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+        <hr>
       </div>
     </div>
   </div>

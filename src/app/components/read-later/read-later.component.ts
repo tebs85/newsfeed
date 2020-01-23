@@ -35,10 +35,10 @@ export class ReadLaterComponent implements OnInit {
     this.savedStories = JSON.parse(localStorage.getItem('savedStories'));
   }
 
-
   saveStory(story: any) {
     this.savedStories.push(story);
     this.setLocalStorage();
+    this.loadLocalStorage();
   }
 
   setLocalStorage() {
