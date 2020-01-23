@@ -13,6 +13,14 @@ h4, h5, h6 {
   font-weight: 400;
 }
 
+.unique-color {
+  background-color: #222 !important;
+}
+
+.navbar {
+  box-shadow: none !important;
+}
+
 .refresh {
   position: absolute;
   right: 0;
@@ -36,8 +44,8 @@ h4, h5, h6 {
 
 .sliderWidth {
   width: 647px !important;
-
 }
+
 .floatingEntryContentSlide {
   margin: 0 auto;
 }
