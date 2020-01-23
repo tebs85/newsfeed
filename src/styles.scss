@@ -37,7 +37,6 @@ h4, h5, h6 {
 }
 
 .scrolling-wrapper {
-
   margin-right: -2px;
   margin-left: -2px;
   padding-right: 2px;
@@ -60,9 +59,9 @@ h4, h5, h6 {
     -webkit-scroll-snap-type: x mandatory;
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
-    grid-auto-columns: 160vw;
-    grid-template-rows: repeat(8, 360px);
-    grid-template-rows: repeat(8, 360px);
+    grid-auto-columns: 140vw;
+    grid-template-rows: repeat(8, 320px);
+    grid-template-rows: repeat(8, 320px);
     grid-column-gap: 1px;
 
     .scrolling-wrapper-item {
