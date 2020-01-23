@@ -8,7 +8,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class FeedService {
 
-  private rssToJsonServiceBaseUrl: string = 'https://rss2json.com/api.json?rss_url=';
+  private rssToJsonServiceBaseUrl = 'https://rss2json.com/api.json?rss_url=';
 
   constructor(
     private http: HttpClient
@@ -22,12 +22,8 @@ export class FeedService {
     );
   }
 
-  private extractFeeds(res: Response): any {
-    let feed = res.json();
-    return feed || { };
-  }
 
-  // Error handling 
+  // Error handling
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
