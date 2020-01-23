@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'angular-bootstrap-md';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FeedService } from '../../services/feed.service';
+import { FeedArticleComponent } from '../feed-article/feed-article.component';
 
 @Component({
   selector: 'app-today',
@@ -8,11 +8,15 @@ import { FeedService } from '../../services/feed.service';
   styleUrls: ['./today.component.scss']
 })
 export class TodayComponent implements OnInit {
-  @ViewChild(ModalDirective, {static: true}) modal: ModalDirective;
-
+  @ViewChild('storyModal', {static: true}) storyModal: FeedArticleComponent;
+  @Input() modal;
   topStories: any = [];
   savedStories: any = [];
-
+  slideConfig = {
+    slidesToShow: 5,
+    slidesToScroll: 2,
+    infinite: false,
+  };
   story = {
     title: '',
     author: '',
@@ -36,13 +40,22 @@ export class TodayComponent implements OnInit {
   constructor(private feed: FeedService) { }
 
 
+  saveStory(story: any) {
+    this.savedStories.push(story);
+    this.setLocalStorage();
+  }
+
+  setLocalStorage() {
+    localStorage.setItem('savedStories', JSON.stringify(this.savedStories));
+  }
+
   ngOnInit() {
     this.loadTopStories();
   }
 
   openModal(story: any) {
     this.story = story;
-    this.modal.show();
+    this.storyModal.show();
   }
 
   loadTopStories() {
@@ -54,13 +67,6 @@ export class TodayComponent implements OnInit {
     });
   }
 
-  saveStory(story: any) {
-    this.savedStories.push(story);
-    this.setLocalStorage();
-  }
 
-  setLocalStorage() {
-    localStorage.setItem('savedStories', JSON.stringify(this.savedStories));
-  }
 
 }
