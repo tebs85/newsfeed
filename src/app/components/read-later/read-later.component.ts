@@ -8,7 +8,7 @@ import { ModalDirective } from 'angular-bootstrap-md';
 })
 export class ReadLaterComponent implements OnInit {
 
-  @ViewChild(ModalDirective, {static: true}) modal: ModalDirective;
+  @ViewChild(ModalDirective, {static: true}) storyModal: ModalDirective;
 
   savedStories: any = [];
   story = {
@@ -35,9 +35,19 @@ export class ReadLaterComponent implements OnInit {
     this.savedStories = JSON.parse(localStorage.getItem('savedStories'));
   }
 
+
+  saveStory(story: any) {
+    this.savedStories.push(story);
+    this.setLocalStorage();
+  }
+
+  setLocalStorage() {
+    localStorage.setItem('savedStories', JSON.stringify(this.savedStories));
+  }
+
   openModal(story: any) {
     this.story = story;
-    this.modal.show();
+    this.storyModal.show();
   }
 
 }
