@@ -67,6 +67,7 @@ export class TodayComponent implements OnInit {
     });
   }
 
-
-
+  refresh() {
+    this.loadTopStories();
+  }
 }
