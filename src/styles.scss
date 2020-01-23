@@ -1,155 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
-    background-color: #333; 
-    color: white; 
+    background-color: #333;
+    color: white;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+h4, h5, h6 {
+  font-weight: 400;
+}
+
+.modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+  line-height: 2.3rem;
+  text-transform: none;
+  clear: both;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.04em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.sliderWidth {
+  width: 647px !important;
+
+}
+.floatingEntryContentSlide {
+  margin: 0 auto;
 }
 
 .scrolling-wrapper {
-    width: 500%;
-    margin-bottom: 40px;
-    overflow: auto;
-  
-    .card {
-        display: inline-block;
+
+  margin-right: -2px;
+  margin-left: -2px;
+  padding-right: 2px;
+  padding-left: 2px;
+  width: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+
+  .scrolling-wrapper-list {
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-x: none;
+    -webkit-scroll-snap-type: x mandatory;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    grid-auto-columns: 160vw;
+    grid-template-rows: repeat(8, 360px);
+    grid-template-rows: repeat(8, 360px);
+    grid-column-gap: 1px;
+
+    .scrolling-wrapper-item {
+      scroll-snap-align: start;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      height: auto
     }
+  }
 }
 
-.one {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 190px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
+#storyModalTop {
+  color: #333;
 
-.two {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 450px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
+  .modal-dialog {
+    background-color: #fff;
+    width: 90vw !important;
 
-.three {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 710px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
-
-.four {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 970px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
-
-.five {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 1230px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
-
-.six {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 1490px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
-
-.seven {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 1750px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
-
-.eight {
-    font: bold 16px sans-Serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: #369;
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0;
-    line-height: 48px;   
-    height: 60px;
-    width: 220px;
-    position: absolute;
-    top: 2010px;
-    left: -70px;
-    transform: rotate(-90deg);
-}
-
-#frameModalTop {
-    color: #333;
+    .modal-content {
+      box-shadow: none !important;
+    }
+  }
 }
