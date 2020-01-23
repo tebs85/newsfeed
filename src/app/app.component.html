@@ -1,78 +1,60 @@
 <!-- <app-main-nav></app-main-nav> -->
 
 <div style="padding: 4em;">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+  <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" id="top-stories-tab" data-toggle="tab" href="#top-stories" role="tab" aria-controls="top-stories" aria-selected="true">Top Stories</a>
+      <a class="nav-link" routerLink="/today" routerLinkActive="active">Today</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="news24-tab" data-toggle="tab" href="#news24" role="tab" aria-controls="news24" aria-selected="false">News 24</a>
+      <a class="nav-link" routerLink="/saved" routerLinkActive="active">Read Later</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/feed" routerLinkActive="active">Feed</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/top-stories" routerLinkActive="active">Top Stories</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/tech" routerLinkActive="active">Tech</a>
     </li>
   </ul>
 
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="top-stories" role="tabpanel" aria-labelledby="top-stories-tab">
+  <router-outlet></router-outlet>
 
-      <div class="no-data" *ngIf="topStories.length == 0">
-        <p>There is no Top Stories yet!</p>
-      </div>
 
-      <div *ngFor="let news of topStories">
-        <div class="scrolling-wrapper" >
-          <div *ngIf="topStories.length !== 0">
-            <h3 class="top-stories">{{news.title}}</h3>
-            <div class="card" *ngFor="let story of news.items" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-              <h4 (click)="openModal(story)">{{story.title}}</h4>
-              <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-pane fade" id="news24" role="tabpanel" aria-labelledby="news24-tab">
-      <div class="no-data" *ngIf="news24.length == 0">
-        <p>There is no News24 stories yet!</p>
-      </div>
-
-      <div *ngFor="let news of news24">
-        <div class="scrolling-wrapper" >
-          <div *ngIf="news24.length !== 0">
-            <h3 class="top-stories">{{news.title}}</h3>
-            <div class="card" *ngFor="let story of news.items" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-              <h4 (click)="openModal(story)">{{story.title}}</h4>
-              <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </div>
 
 
 <!--Modal-->
 <div mdbModal  #frame="mdbModal"  class="modal fade right"  id="frameModalTop"
-  tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  aria-hidden="true"  style="overflow-y: auto"
+  tabindex="-1"  role="dialog"  aria-labelledby="myModalLabel"  aria-hidden="true"  style="overflow-y: auto;"
 >
   <!--Dialog-->
   <div class="modal-dialog modal-lg modal-full-height modal-right" role="document">
     <!--Content-->
-    <div class="modal-content">
+    <div class="modal-content" style="padding-left: 10em; padding-right: 10em;">
       <!--Header-->
       <div class="modal-header">
         <button type="button" class="close pull-right" aria-label="Close" (click)="frame.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
+        <button type="button" mdbBtn color="link">Read Later</button>
+        <button type="button" mdbBtn color="link">Save</button>
+        <button type="button" mdbBtn color="link">Copy Link</button>
       </div>
 
       <!--Body-->
       <div class="modal-body">
-        <p><small>{{story.pubDate | date: "dd MMM, yyyy"}}</small></p>
-               
-        {{story.content}}
+        <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
+        <p class="mb-4"><small>{{story.pubDate | date: "dd MMM, yyyy"}}</small><span *ngIf="story.author">by {{story.author}}</span></p>
+
+        <div class="mb-4" [innerHTML]="story.content"></div>
+
+        <div class="text-center mt-4">
+          <a type="button" mdbBtn color="default" outline="true" block="true" [href]="story.link" target="_blank">Visit Website</a>
+        </div>
+
       </div>
 
     </div>
