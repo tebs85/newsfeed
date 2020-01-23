@@ -7,6 +7,10 @@ import { FeedChannelComponent } from './components/feed-channel/feed-channel.com
 import { ExploreComponent } from './components/explore/explore.component';
 
 const appRoutes: Routes = [{
+    path: '',
+    component: TodayComponent
+  },
+  {
     path: 'today',
     component: TodayComponent
   },
