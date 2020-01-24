@@ -12,10 +12,14 @@ import { TodayComponent } from './components/today/today.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { ReadLaterComponent } from './components/read-later/read-later.component';
-import { FeedChannelComponent } from './components/feed-channel/feed-channel.component';
-import { FeedArticleComponent } from './components/feed-article/feed-article.component';
-import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { FeedChannelComponent } from './components/feed/feed-channel/feed-channel.component';
+import { FeedArticleComponent } from './components/feed/feed-article/feed-article.component';
+import { SplashScreenComponent } from './components/app-state/splash-screen/splash-screen.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { EmptyStateComponent } from './components/app-state/empty-state/empty-state.component';
+import { LoadingStateComponent } from './components/app-state/loading-state/loading-state.component';
+import { ProfileComponent } from './components/account/profile/profile.component';
+import { SettingsComponent } from './components/account/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     FeedChannelComponent,
     FeedArticleComponent,
     SplashScreenComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmptyStateComponent,
+    LoadingStateComponent,
+    ProfileComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
