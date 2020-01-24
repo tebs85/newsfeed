@@ -42,6 +42,20 @@ h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+#splashscreen {
+  position:absolute;
+  top:50%;
+  left:0;
+  transform:translateX(0) translateY(-50%);
+  font-size:44px;
+  color:#d6d6d6;
+  font-weight:700;
+  font-family:helvetica,sans-serif;
+  letter-spacing:-.04em;
+  text-align:center;
+  width:100%
+ }
+
 .sliderWidth {
   width: 647px !important;
 }

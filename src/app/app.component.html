@@ -1,7 +1,8 @@
-<app-main-nav></app-main-nav>
+<app-main-nav *ngIf="isLoading"></app-main-nav>
 
-<div style="padding: 2em 1em;">
-  <ul class="nav nav-tabs">
+<section style="padding: 2em 1em;">
+
+  <ul class="nav nav-tabs" *ngIf="isLoading">
     <li class="nav-item">
       <a class="nav-link" routerLink="/today" routerLinkActive="active">Today</a>
     </li>
@@ -17,8 +18,9 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/tech" routerLinkActive="active">Tech</a>
     </li>
+
   </ul>
 
   <router-outlet></router-outlet>
 
-</div>
+</section>

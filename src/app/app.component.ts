@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FeedService } from './services/feed.service';
 import { ModalDirective } from 'angular-bootstrap-md';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   title = 'News Feed';
   news24: any = [];
   topStories: any = [];
-
+  isLoading = false;
   story = {
     title: 'Heading',
     author: 'Name Surname',
@@ -51,11 +52,15 @@ export class AppComponent implements OnInit {
     { title: 'Entertainment', url: 'http://feeds.news24.com/articles/channel/topstories/rss'}
   ];
 
-  constructor(private feed: FeedService) { }
+  constructor(private feed: FeedService, private router: Router) { }
 
   ngOnInit() {
     this.loadTopStories();
     // this.loadNews24Stories();
+    setTimeout(() => {
+      this.isLoading = true;
+      this.router.navigate(['/today']);
+    }, 4000);
   }
 
   openModal(story: any) {
@@ -68,8 +73,8 @@ export class AppComponent implements OnInit {
       return this.feed.getFeedContent(story.url)
       .subscribe((data: any) => {
         this.news24.push({title: story.title, items: data.items});
-      })
-    })
+      });
+    });
   }
 
   loadTopStories() {
@@ -77,12 +82,12 @@ export class AppComponent implements OnInit {
       return this.feed.getFeedContent(story.url)
       .subscribe((data: any) => {
         this.topStories.push({title: story.title, items: data.items});
-      })
-    })
+      });
+    });
   }
 
   getTopicStories(topic: string) {
-    return this.news24.find(story => story.title === topic)
+    return this.news24.find(story => story.title === topic);
   }
 
 }

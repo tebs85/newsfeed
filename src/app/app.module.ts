@@ -14,6 +14,8 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { ReadLaterComponent } from './components/read-later/read-later.component';
 import { FeedChannelComponent } from './components/feed-channel/feed-channel.component';
 import { FeedArticleComponent } from './components/feed-article/feed-article.component';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FeedArticleComponent } from './components/feed-article/feed-article.com
     ExploreComponent,
     ReadLaterComponent,
     FeedChannelComponent,
-    FeedArticleComponent
+    FeedArticleComponent,
+    SplashScreenComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
