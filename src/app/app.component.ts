@@ -4,6 +4,7 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +17,6 @@ export class AppComponent implements OnInit {
   title = 'News Feed';
   news24: any = [];
   topStories: any = [];
-  isLoading = false;
   story = {
     title: 'Heading',
     author: 'Name Surname',
@@ -26,9 +26,6 @@ export class AppComponent implements OnInit {
     pubDate: ''
   };
 
-  categoriesChannel = [
-
-  ];
 
   topStoriesChannels = [
     { title: 'News24', url: 'http://feeds.news24.com/articles/news24/TopStories/rss'},
@@ -52,38 +49,21 @@ export class AppComponent implements OnInit {
     { title: 'Entertainment', url: 'http://feeds.news24.com/articles/channel/topstories/rss'}
   ];
 
-  constructor(private feed: FeedService, private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.loadTopStories();
-    // this.loadNews24Stories();
-    setTimeout(() => {
-      this.isLoading = true;
-      this.router.navigate(['/today']);
-    }, 4000);
+    localStorage.setItem('splashScreen', JSON.stringify({isLoaded: false}));
+    const isLoading = JSON.parse(localStorage.getItem('splashScreen')).isLoaded;
+
+    console.log(isLoading);
+    if (isLoading) {
+      this.lauchSplashScreen();
+    }
+
   }
 
-  openModal(story: any) {
-    this.story = story;
-    this.modal.show();
-  }
-
-  loadNews24Stories() {
-    this.news24Channels.forEach(story => {
-      return this.feed.getFeedContent(story.url)
-      .subscribe((data: any) => {
-        this.news24.push({title: story.title, items: data.items});
-      });
-    });
-  }
-
-  loadTopStories() {
-    this.topStoriesChannels.forEach(story => {
-      return this.feed.getFeedContent(story.url)
-      .subscribe((data: any) => {
-        this.topStories.push({title: story.title, items: data.items});
-      });
-    });
+  private lauchSplashScreen() {
+    this.router.navigate(['/']);
   }
 
   getTopicStories(topic: string) {
