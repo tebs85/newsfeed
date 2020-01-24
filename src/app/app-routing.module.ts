@@ -5,10 +5,11 @@ import { ReadLaterComponent } from './components/read-later/read-later.component
 import { FeedComponent } from './components/feed/feed.component';
 import { FeedChannelComponent } from './components/feed-channel/feed-channel.component';
 import { ExploreComponent } from './components/explore/explore.component';
+import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
 
 const appRoutes: Routes = [{
     path: '',
-    component: TodayComponent
+    component: SplashScreenComponent
   },
   {
     path: 'today',
