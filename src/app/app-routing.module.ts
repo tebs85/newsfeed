@@ -6,6 +6,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { FeedChannelComponent } from './components/feed-channel/feed-channel.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { SplashScreenComponent } from './components/splash-screen/splash-screen.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [{
     path: '',
@@ -30,6 +31,10 @@ const appRoutes: Routes = [{
   {
     path: 'explore',
     component: ExploreComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }];
 
 @NgModule({
