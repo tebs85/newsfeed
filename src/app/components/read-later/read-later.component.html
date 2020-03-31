@@ -57,7 +57,10 @@
       <!--Body-->
       <div class="modal-body">
         <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
-        <p class="mb-4"><small>{{story.pubDate | date: "dd MMM, yyyy"}}</small><span *ngIf="story.author">by {{story.author}}</span></p>
+        <p class="mb-4">
+          <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+          <span *ngIf="story.author">by {{story.author}}</span>
+        </p>
         
         <div class="mb-4" [innerHTML]="story.content"></div>
 
