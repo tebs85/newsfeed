@@ -1,29 +1,41 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, HostListener } from '@angular/core';
 import { FeedService } from '../../services/feed.service';
-import { FeedArticleComponent } from '../feed-article/feed-article.component';
+import { NewsApiService } from '../../services/newsapi.service';
+import { FeedArticleComponent } from '../feed/feed-article/feed-article.component';
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 39,
+  LEFT_ARROW = 37
+}
 
 @Component({
   selector: 'app-today',
   templateUrl: './today.component.html',
   styleUrls: ['./today.component.scss']
 })
+
 export class TodayComponent implements OnInit {
   @ViewChild('storyModal', {static: true}) storyModal: FeedArticleComponent;
   @Input() modal;
   topStories: any = [];
   savedStories: any = [];
+  isLoading = true;
   slideConfig = {
     slidesToShow: 5,
     slidesToScroll: 2,
     infinite: false,
   };
   story = {
+    source: {
+      name: ''
+    },
     title: '',
     author: '',
     description: '',
     content: '',
-    link: '',
-    pubDate: ''
+    url: '',
+    urlToImage: '',
+    publishedAt: ''
   };
 
   topStoriesChannels = [
@@ -37,7 +49,7 @@ export class TodayComponent implements OnInit {
     { title: 'MyBroadBand', url: 'https://mybroadband.co.za/news/feed'}
   ];
 
-  constructor(private feed: FeedService) { }
+  constructor(private newsApifeed: NewsApiService, private feed: FeedService) { }
 
 
   saveStory(story: any) {
@@ -50,6 +62,8 @@ export class TodayComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.loadSources('sources');
+    // this.loadStories('top-headlines');
     this.loadTopStories();
   }
 
@@ -65,9 +79,42 @@ export class TodayComponent implements OnInit {
         this.topStories.push({title: story.title, items: data.items});
       });
     });
+    this.isLoading = false;
+  }
+
+  loadSources(endPoint: string) {
+    return this.newsApifeed.getStories(endPoint).subscribe((data: any) => {
+      this.topStories.push(data.articles);
+      this.isLoading = false;
+    });
+  }
+
+  loadStories(endPoint: string) {
+    return this.newsApifeed.getStories(endPoint).subscribe((data: any) => {
+      this.topStories = data.articles;
+      this.isLoading = false;
+    });
   }
 
   refresh() {
-    this.loadTopStories();
+    this.loadStories('top-headlines');
+  }
+
+  loadNextStory() {
+    window.alert('Next story');
+  }
+
+  loadPastStory() {
+    window.alert('Past story');
+  }
+
+  @HostListener('keydown') keyEvent(event) {
+    if (KEY_CODE.LEFT_ARROW === 37) {
+      console.log(event);
+    }
+
+    if (KEY_CODE.RIGHT_ARROW === 39) {
+      console.log(event);
+    }
   }
 }
