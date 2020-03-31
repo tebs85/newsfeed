@@ -1,0 +1,16 @@
+<div class="scrolling-wrapper">
+  <div class="scrolling-wrapper-list" [ngStyle]="{'--grid-rows':'1', '--grid-column-gap':'20px' }">
+    <div *ngFor="let news of topStories"  >
+      <h3 class="top-stories">{{news.title}}</h3>
+      <ngx-slick-carousel [config]="slideConfig" #slickModal="slick-carousel" class="carousel">
+        <div class="scrolling-wrapper-item" ngxSlickItem *ngFor="let story of news.items" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
+          <div (click)="openModal(story)">
+            <div [ngStyle]="{'background-image': 'url(story.visualUrl)', 'background-size': 'cover'}"></div>
+            <h4>{{story.title}}</h4>
+            <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>
