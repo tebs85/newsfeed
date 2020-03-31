@@ -54,12 +54,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     localStorage.setItem('splashScreen', JSON.stringify({isLoaded: false}));
     const isLoading = JSON.parse(localStorage.getItem('splashScreen')).isLoaded;
-
-    console.log(isLoading);
     if (isLoading) {
       this.lauchSplashScreen();
     }
-
   }
 
   private lauchSplashScreen() {

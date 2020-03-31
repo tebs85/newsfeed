@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
@@ -42,6 +42,7 @@ import { FeedArticleSnippetComponent } from './components/feed/feed-article-snip
   ],
   imports: [
     BrowserModule,
+    ModalModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,

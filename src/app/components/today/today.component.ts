@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, ViewChild, HostListener } from '@angular/core';
 import { FeedService } from '../../services/feed.service';
 import { NewsApiService } from '../../services/newsapi.service';
-import { FeedArticleComponent } from '../feed/feed-article/feed-article.component';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 export enum KEY_CODE {
+  ESCAPE = 27,
   RIGHT_ARROW = 39,
   LEFT_ARROW = 37
 }
@@ -15,8 +16,8 @@ export enum KEY_CODE {
 })
 
 export class TodayComponent implements OnInit {
-  @ViewChild('storyModal', {static: true}) storyModal: FeedArticleComponent;
-  @Input() modal;
+  @ViewChild('storyModal', { static: true }) public storyModal: ModalDirective;
+  // @Input() modal;
   topStories: any = [];
   savedStories: any = [];
   isLoading = true;
@@ -25,6 +26,8 @@ export class TodayComponent implements OnInit {
     slidesToScroll: 2,
     infinite: false,
   };
+  channelIndex: number;
+  storyIndex: number;
   story = {
     source: {
       name: ''
@@ -35,7 +38,9 @@ export class TodayComponent implements OnInit {
     content: '',
     url: '',
     urlToImage: '',
-    publishedAt: ''
+    publishedAt: '',
+    pubDate: '',
+    link: ''
   };
 
   topStoriesChannels = [
@@ -67,7 +72,9 @@ export class TodayComponent implements OnInit {
     this.loadTopStories();
   }
 
-  openModal(story: any) {
+  openModal(story: any, channelIndex: number, storyIndex: number) {
+    this.channelIndex = channelIndex;
+    this.storyIndex = storyIndex;
     this.story = story;
     this.storyModal.show();
   }
@@ -79,25 +86,34 @@ export class TodayComponent implements OnInit {
         this.topStories.push({title: story.title, items: data.items});
       });
     });
-    this.isLoading = false;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
   }
 
   loadSources(endPoint: string) {
-    return this.newsApifeed.getStories(endPoint).subscribe((data: any) => {
+    return this.newsApifeed.getStories(endPoint)
+    .subscribe((data: any) => {
       this.topStories.push(data.articles);
       this.isLoading = false;
     });
   }
 
   loadStories(endPoint: string) {
-    return this.newsApifeed.getStories(endPoint).subscribe((data: any) => {
+    return this.newsApifeed.getStories(endPoint)
+    .subscribe((data: any) => {
       this.topStories = data.articles;
       this.isLoading = false;
     });
   }
 
+  hideModal() {
+    this.storyModal.hide();
+  }
+
   refresh() {
-    this.loadStories('top-headlines');
+    this.loadTopStories();
+    // this.loadStories('top-headlines');
   }
 
   loadNextStory() {
@@ -108,13 +124,25 @@ export class TodayComponent implements OnInit {
     window.alert('Past story');
   }
 
-  @HostListener('keydown') keyEvent(event) {
-    if (KEY_CODE.LEFT_ARROW === 37) {
-      console.log(event);
+  @HostListener('keydown', ['$event'])
+  public keyEvent(event): void {
+    const storyLength = this.topStories[this.channelIndex].items.length;
+
+    if (event.keyCode === KEY_CODE.ESCAPE) {
+      this.hideModal();
     }
 
-    if (KEY_CODE.RIGHT_ARROW === 39) {
-      console.log(event);
+    if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+      if (0 === this.storyIndex ) { return; }
+      this.storyIndex = this.storyIndex - 1;
     }
+
+    if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+      if ((storyLength - 1) === this.storyIndex ) { return; }
+      this.storyIndex = this.storyIndex + 1;
+    }
+
+    const story = this.topStories[this.channelIndex].items[this.storyIndex];
+    this.openModal(story, this.channelIndex, this.storyIndex);
   }
 }
