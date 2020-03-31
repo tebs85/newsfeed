@@ -20,6 +20,7 @@ import { EmptyStateComponent } from './components/app-state/empty-state/empty-st
 import { LoadingStateComponent } from './components/app-state/loading-state/loading-state.component';
 import { ProfileComponent } from './components/account/profile/profile.component';
 import { SettingsComponent } from './components/account/settings/settings.component';
+import { FeedArticleSnippetComponent } from './components/feed/feed-article-snippet/feed-article-snippet.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SettingsComponent } from './components/account/settings/settings.compon
     EmptyStateComponent,
     LoadingStateComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    FeedArticleSnippetComponent
   ],
   imports: [
     BrowserModule,
