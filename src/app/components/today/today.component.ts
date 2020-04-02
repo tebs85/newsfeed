@@ -25,6 +25,31 @@ export class TodayComponent implements OnInit {
     slidesToShow: 5,
     slidesToScroll: 2,
     infinite: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   channelIndex: number;
   storyIndex: number;
@@ -70,6 +95,10 @@ export class TodayComponent implements OnInit {
     // this.loadSources('sources');
     // this.loadStories('top-headlines');
     this.loadTopStories();
+  }
+
+  formatDate(obj) {
+    return obj.toString().replace(/,/g, '/');
   }
 
   openModal(story: any, channelIndex: number, storyIndex: number) {

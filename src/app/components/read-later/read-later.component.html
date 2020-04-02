@@ -13,7 +13,7 @@
     <div class="scrolling-wrapper" >
       <div *ngIf="savedStories.length !== 0">
         <h4 (click)="openModal(story)">{{story.title}}</h4>
-        <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+        <small>{{formatDate(story.pubDate) | date: "dd MMM, yyyy"}}</small>
         <hr>
       </div>
     </div>
@@ -27,16 +27,16 @@
   <!--Dialog-->
   <div class="modal-dialog modal-lg modal-full-height modal-right" role="document">
     <!--Content-->
-    <div class="modal-content" style="padding-left: 10em; padding-right: 10em;">
+    <div class="modal-content floatingEntryContentSlide sliderWidth">
       <!--Header-->
       <div class="modal-header">
         <button type="button" class="close pull-right" aria-label="Close" (click)="storyModal.hide()">
           <span aria-hidden="true">×</span>
         </button>
         <div class="mr-auto w-25">
-          <span class="social-btn" disabled (click)="saveStory(story)">
+          <!-- <span class="social-btn" disabled (click)="saveStory(story)">
             <i class="far fa-bookmark"></i>
-          </span>
+          </span> -->
           <span class="social-btn">
             <i class="fas fa-link"></i>
           </span>
@@ -62,10 +62,10 @@
       <div class="modal-body">
         <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
         <p class="mb-4">
-          <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+          <small>{{ formatDate(story.pubDate) | date: "dd MMM, yyyy"}}</small>
           <span *ngIf="story.author">by {{story.author}}</span>
         </p>
-        
+
         <div class="mb-4" [innerHTML]="story.content"></div>
 
         <div class="text-center mt-4">

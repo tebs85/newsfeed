@@ -9,7 +9,7 @@
 </header>
 
 <section>
-  <div class="no-data" *ngIf="topStories.length == 0">
+  <div class="no-data" *ngIf="topStories.length === 0">
     <p>There is no Top Stories yet!</p>
   </div>
 
@@ -18,10 +18,10 @@
       <div *ngFor="let news of topStories; let i = index "  >
         <h3 class="top-stories">{{news.title}}</h3>
         <ngx-slick-carousel [config]="slideConfig" class="carousel">
-          <div (click)="openModal(story, i, j)" class="scrolling-wrapper-item" ngxSlickItem *ngFor="let story of news.items; let j = index" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 400px !important;">
-            <div [ngStyle]="{'background-image': 'url(story.visualUrl)', 'background-size': 'cover'}"></div>
+          <div (click)="openModal(story, i, j)" class="scrolling-wrapper-item" ngxSlickItem *ngFor="let story of news.items; let j = index" style="background: #111; padding: 2em; color: white; float: left; height: 220px; border-left: 2px solid #333; width: 20% !important;">
+            <!-- <div [ngStyle]="{'background-image': 'url(story.visualUrl)', 'background-size': 'cover'}"></div> -->
             <h4>{{story.title}}</h4>
-            <small>{{story.pubDate | date: "dd MMM, yyyy"}}</small>
+            <small>{{formatDate(story.pubDate) | date: "dd MMM, yyyy"}}</small>
           </div>
         </ngx-slick-carousel>
       </div>
@@ -54,7 +54,7 @@
           </span>
         </div>
         <div class="m-auto w-25"></div>
-        <div class="ml-auto w-50">
+        <div class="ml-auto w-50 d-none d-md-block">
           <span class="social-btn">
             <i class="far fa-envelope"></i>
           </span>
@@ -73,7 +73,10 @@
       <!--Body-->
       <div class="modal-body">
         <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
-        <p class="mb-4"><small>{{story.pubDate | date: "dd MMM, yyyy"}}</small><span *ngIf="story.author">by {{story.author}}</span></p>
+        <p class="mb-4">
+          <small>{{ formatDate(story.pubDate) | date: "dd MMM, yyyy"}}</small>
+          <span *ngIf="story.author">by {{story.author}}</span>
+        </p>
 
         <div class="mb-4" [innerHTML]="story.content"></div>
 

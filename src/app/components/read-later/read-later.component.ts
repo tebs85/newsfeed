@@ -27,6 +27,10 @@ export class ReadLaterComponent implements OnInit {
     this.loadSavedStories();
   }
 
+  formatDate(obj) {
+    return obj.toString().replace(/,/g, '/');
+  }
+
   loadSavedStories() {
     return this.savedStories;
   }
