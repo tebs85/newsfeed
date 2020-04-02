@@ -9,8 +9,8 @@
 </header>
 
 <section>
-  <div class="no-data" *ngIf="topStories.length === 0">
-    <p>There is no Top Stories yet!</p>
+  <div class="message loading" *ngIf="topStories.length === 0">
+    Loading...
   </div>
 
   <div class="scrolling-wrapper" >
