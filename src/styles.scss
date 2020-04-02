@@ -70,7 +70,7 @@ h4, h5, h6 {
 }
 
 .sliderWidth {
-  width: 780px !important;
+  width: 80% !important;
 }
 
 .floatingEntryContentSlide {
@@ -108,44 +108,43 @@ h4, h5, h6 {
 }
 
 
-.scrolling-wrapper {
-  margin-right: -2px;
-  margin-left: -2px;
-  padding-right: 2px;
-  padding-left: 2px;
-  width: 100%;
-  overflow: hidden;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+// .scrolling-wrapper {
+//   margin-right: -2px;
+//   margin-left: -2px;
+//   padding-right: 2px;
+//   padding-left: 2px;
+//   overflow: hidden;
+//   -webkit-box-sizing: content-box;
+//   box-sizing: content-box;
 
-  .scrolling-wrapper-list {
-    padding: 0;
-    display: grid;
-    grid-auto-flow: column;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    overscroll-behavior-x: none;
-    -webkit-scroll-snap-type: x mandatory;
-    -ms-scroll-snap-type: x mandatory;
-    scroll-snap-type: x mandatory;
-    grid-auto-columns: 140vw;
-    grid-template-rows: repeat(8, 320px);
-    grid-template-rows: repeat(8, 320px);
-    grid-column-gap: 1px;
+//   .scrolling-wrapper-list {
+//     padding: 0;
+//     display: grid;
+//     grid-auto-flow: column;
+//     overflow-x: auto;
+//     overflow-y: hidden;
+//     -webkit-overflow-scrolling: touch;
+//     scroll-behavior: smooth;
+//     scrollbar-width: none;
+//     overscroll-behavior-x: none;
+//     -webkit-scroll-snap-type: x mandatory;
+//     -ms-scroll-snap-type: x mandatory;
+//     scroll-snap-type: x mandatory;
+//     grid-auto-columns: 140vw;
+//     grid-template-rows: repeat(8, 320px);
+//     grid-template-rows: repeat(8, 320px);
+//     grid-column-gap: 1px;
 
-    .scrolling-wrapper-item {
-      scroll-snap-align: start;
-      -webkit-box-align: start;
-      -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-      align-items: flex-start;
-      height: auto
-    }
-  }
-}
+//     .scrolling-wrapper-item {
+//       scroll-snap-align: start;
+//       -webkit-box-align: start;
+//       -webkit-align-items: flex-start;
+//       -ms-flex-align: start;
+//       align-items: flex-start;
+//       height: auto
+//     }
+//   }
+// }
 
 #storyModalTop {
   color: #333;
