@@ -18,8 +18,8 @@ export enum KEY_CODE {
 export class TodayComponent implements OnInit {
   @ViewChild('storyModal', { static: true }) public storyModal: ModalDirective;
   // @Input() modal;
-  topStories: any = [];
-  savedStories: any = [];
+  topStories: Array<any> = [];
+  savedStories: Array<any> = [];
   isLoading = true;
   slideConfig = {
     slidesToShow: 5,
@@ -88,7 +88,7 @@ export class TodayComponent implements OnInit {
     { title: 'MyBroadBand', url: 'https://mybroadband.co.za/news/feed'}
   ];
 
-  constructor(private newsApifeed: NewsApiService, private feed: FeedService) { }
+  constructor(private newsApiFeed: NewsApiService, private feed: FeedService) { }
 
 
   saveStory(story: any) {
@@ -119,18 +119,16 @@ export class TodayComponent implements OnInit {
 
   loadTopStories() {
     this.topStoriesChannels.forEach(story => {
-      return this.feed.getFeedContent(story.url)
-      .subscribe((data: any) => {
-        this.topStories.push({title: story.title, items: data.items});
-      });
+      return this.feed.getFeedContent(story.url).subscribe(
+        (data: any) => { this.topStories.push({title: story.title, items: data.items}); },
+        err => console.error(err),
+        () => console.log('done loading news from ' + story.title, this.topStories));
     });
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 4000);
+    this.isLoading = false;
   }
 
   loadSources(endPoint: string) {
-    return this.newsApifeed.getStories(endPoint)
+    return this.newsApiFeed.getStories(endPoint)
     .subscribe((data: any) => {
       this.topStories.push(data.articles);
       this.isLoading = false;
@@ -138,7 +136,7 @@ export class TodayComponent implements OnInit {
   }
 
   loadStories(endPoint: string) {
-    return this.newsApifeed.getStories(endPoint)
+    return this.newsApiFeed.getStories(endPoint)
     .subscribe((data: any) => {
       this.topStories = data.articles;
       this.isLoading = false;
