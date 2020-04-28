@@ -17,7 +17,8 @@ export class ReadLaterComponent implements OnInit {
     description: '',
     content: '',
     link: '',
-    pubDate: ''
+    pubDate: '',
+    read: false
   };
 
   constructor() { }
@@ -50,8 +51,12 @@ export class ReadLaterComponent implements OnInit {
   }
 
   openModal(story: any) {
+    story.read = true;
     this.story = story;
+    const index = this.savedStories.findIndex(data => data.title === story.title);
+    this.savedStories[index] = story;
     this.storyModal.show();
+    this.setLocalStorage();
   }
 
 }

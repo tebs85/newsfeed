@@ -5,13 +5,16 @@
 </header>
 
 <section>
-  <div class="no-data" *ngIf="savedStories.length == 0">
+  <div class="no-data" *ngIf="savedStories.length === 0">
     <p>There is no Saved Stories yet!</p>
   </div>
 
   <div *ngFor="let story of savedStories">
     <div class="scrolling-wrapper" >
       <div *ngIf="savedStories.length !== 0">
+        <span *ngIf="!story.read">
+          <span class="badge badge-pill badge-light">{{story.read ? 'read' : 'unread'}}</span>
+        </span>
         <h4 (click)="openModal(story)">{{story.title}}</h4>
         <small>{{formatDate(story.pubDate) | date: "dd MMM, yyyy"}}</small>
         <hr>
@@ -63,7 +66,7 @@
         <h4 class="modal-title w-100" id="myModalLabel">{{story.title}}</h4>
         <p class="mb-4">
           <small>{{ formatDate(story.pubDate) | date: "dd MMM, yyyy"}}</small>
-          <span *ngIf="story.author">by {{story.author}}</span>
+           <span *ngIf="story.author">by {{story.author}}</span>
         </p>
 
         <div class="mb-4" [innerHTML]="story.content"></div>

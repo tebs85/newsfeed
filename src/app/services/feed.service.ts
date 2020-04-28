@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, throwError, concat } from 'rxjs';
+import { retry, catchError, toArray } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,11 @@ export class FeedService {
   constructor(
     private http: HttpClient
   ) { }
+
+  getStories(channels: any[]) {
+    const observables = channels.map(story => this.http.get(`${this.rssToJsonServiceBaseUrl}${story.url}`));
+    return concat(...observables).pipe(toArray());
+  }
 
   getFeedContent(url: string): Observable<any> {
     return this.http.get(`${this.rssToJsonServiceBaseUrl}` + url)

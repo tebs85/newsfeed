@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, HostListener } from '@angular/core
 import { FeedService } from '../../services/feed.service';
 import { NewsApiService } from '../../services/newsapi.service';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { Observable } from 'rxjs';
 
 export enum KEY_CODE {
   ESCAPE = 27,
@@ -18,8 +19,8 @@ export enum KEY_CODE {
 export class TodayComponent implements OnInit {
   @ViewChild('storyModal', { static: true }) public storyModal: ModalDirective;
   // @Input() modal;
-  topStories: Array<any> = [];
-  savedStories: Array<any> = [];
+  topStories: any[] = [];
+  savedStories: any[] = [];
   isLoading = true;
   slideConfig = {
     slidesToShow: 5,
@@ -92,7 +93,8 @@ export class TodayComponent implements OnInit {
 
 
   saveStory(story: any) {
-    this.savedStories.push(story);
+    const unreadStory = Object.assign(story, {read: false});
+    this.savedStories.push(unreadStory);
     this.setLocalStorage();
   }
 
@@ -118,13 +120,12 @@ export class TodayComponent implements OnInit {
   }
 
   loadTopStories() {
-    this.topStoriesChannels.forEach(story => {
-      return this.feed.getFeedContent(story.url).subscribe(
-        (data: any) => { this.topStories.push({title: story.title, items: data.items}); },
-        err => console.error(err),
-        () => console.log('done loading news from ' + story.title, this.topStories));
-    });
-    this.isLoading = false;
+    const stories$: Observable<any> = this.feed.getStories(this.topStoriesChannels);
+    stories$.subscribe(
+      (data: any) => this.topStories = data.map(item => ({title: item.feed.title, items: item.items})),
+      err => console.error(err),
+      () => this.isLoading = false,
+    );
   }
 
   loadSources(endPoint: string) {
